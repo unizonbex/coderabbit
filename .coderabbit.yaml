@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+language: "ja-JP"
+tone_instructions: "可能な限りわかりやすく解説してください。"
+reviews:
+  profile: "chill"
+  poem: false
+  path_instructions:
+    - path: "**/*.{js,ts,vue}"
+      instructions: |
+        - 変数、関数名はlowerCamelCase(ファイル名含む)
+        - クラス名はupperCamelCase(ファイル名含む)
+        - var禁止
+        - 再代入の無いlet宣言は禁止
+        - 同じ処理は反復処理化や関数化する
+        - マジックナンバーは禁止。定数化する
+        - 理解しにくい処理はコメントを適宜追加する
+        - function内でfunctionの宣言は禁止
+        - ネストを深くしすぎない
+        - エラーハンドリングは呼び出し元で行う
+    - path: "**/*.{html,vue}"
+      instructions: |
+        - htmlファイル名はlowerCamelCase
+        - クラス名はkebab-case
+        - クラス名は2階層までを推奨。2単語を1つの塊として扱う場合は2単語をlowerCamelCaseで繋げる
+        - 状態を表すクラス名はアンダーバー始まり
+        - SEOを意識
+        - アクセシビリティ対応を意識
+    - path: "**/*.{css,vue}"
+      instructions: |
+        - フォントサイズはremで行う
+        - cssファイル名はlowerCamelCase
+        - 要素の外側への余白設定は左 or 上に設定する
+        - paddingとmarginを明確に使い分ける
+        - コンポーネント化したスタイルは外部に影響のあるスタイルは原則禁止
+    - path: "**/*.vue"
+      instructions: |
+        - vueファイル名はupperCamelCase
+        - ルートの要素のクラス名はコンポーネント名と同一にする
+        - 1つのコンポーネントが持つ役割をできるだけ小さくする
+        - 共通的なコンポーネントは再利用しやすい記述をする
+        - 複雑なロジックや繰り返し使う処理は切り分ける
+        - 処理を切り分ける際にアプリ全体で利用する場合はstore、コンポーネント単位で完結できる場合はcomposableを利用
+
+  labeling_instructions:
+    - label: "bug"
+      instructions: "バグ対応"
+    - label: "refactor"
+      instructions: "リファクタ"
+    - label: "fix"
+      instructions: "修正"
+    - label: "update"
+      instructions: "更新"
+    - label: "new"
+      instructions: "新規機能"
